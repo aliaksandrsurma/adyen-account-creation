@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>List Records</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+  <div th:replace="fragments/header.html :: header"></div>
+</br>
+<div>
+    <form method="get" action="/get-list">
+        Import batch name:  
+		<select id="fileName" name="fileName">
+			<option value="">Select import batch </option>
+			<option th:each="file : ${files}" th:value="${file}" th:text="${file}" th:selected="${file==fileName}"></option>
+		</select>
+		<input type="submit" id="refresh" name="refresh" value="Refresh!"/>
+	</form>
+</div>
+</br>
+
+<div>
+    <form method="get" action="/create-accounts-in-adyen">
+      <input type="hidden" id="fileName" name="fileName" th:value="${fileName}" />
+      <input type="submit" id="createAccounts" name="createAccounts" value="Create Accounts!" />
+
+       <div style="padding-top:18px">
+       <table>
+        <tr>
+          <th>Record ID</th>
+          <th>Last Name</th>
+          <th>First Name</th>
+          <th>email</th>
+          <th>login</th>
+          <th>Acive?</th>
+          <th>User Group</th>
+          <th>Market</th>
+          <th>Status</th>
+          <th>Error</th>
+          <th>Environment</th>
+          <th>Created Date</th>
+        </tr>
+        <tr th:each="acc,iterationStatus  : ${accounts}">
+          <td th:text="${iterationStatus.count}">1</td>
+          <td th:text="${acc.lastName}">N/A</td>
+          <td th:text="${acc.firstName}">N/A</td>
+          <td th:text="${acc.email}">N/A</td>
+          <td th:text="${acc.login}">N/A</td>
+          <td th:text="${acc.active}">N/A</td>
+          <td th:text="${acc.userGroup}">N/A</td>
+          <td th:text="${acc.market}">N/A</td>
+          
+          <div th:switch="${acc.status}"> 
+            <td style="color:red" th:case="'adyen_created_failed'" th:text="${acc.status}"></td>
+            <td th:case="*" th:text="${acc.status}">result</td> 
+          </div>
+
+          <td th:text="${acc.error}"></td>
+          <td th:text="${acc.environment}"></td>
+          <td th:text="${acc.createDate}">N/A</td>
+        </tr>
+      </table>
+      </div>
+    </form>
+    </div>
+</body>
+</html>

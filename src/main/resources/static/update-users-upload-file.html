@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Update Adyen Users </title>
+</head>
+<body>
+    <div th:replace="fragments/header.html :: header"></div>
+<br/>
+
+ <form action="/update-accounts" method="post"
+    enctype="multipart/form-data">
+
+    <input type="file" name="file"> 
+    <input type="submit" value="Update accounts!" />
+  </form>
+</body>
+</html>

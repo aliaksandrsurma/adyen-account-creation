@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Adyen Account Creation Utility</title>
+</head>
+<body>
+
+  <div th:replace="fragments/header.html :: header"></div>
+
+  <br />
+  <div>
+    Actions:
+    <ol>
+      <li>Upload from File <a href="/upload.html">page</a></li>
+      <li>List accounts (based on file) <a
+        href="/get-list?fileName=">page</a></li>
+      <li>Export file <a href="/export-select-file">page</a></li>
+      <li>Update accounts <a href="/update-users-upload-file.html">page</a></li>
+
+    </ol>
+  </div>
+
+</body>
+</html>

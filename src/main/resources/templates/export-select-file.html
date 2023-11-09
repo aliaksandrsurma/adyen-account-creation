@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Export into excel </title>
+</head>
+<body>
+
+   <div th:replace="fragments/header.html :: header"></div>
+   <form method="get" action="/export ">
+        
+		<select id="fileName" name="fileName">
+			<option value="">Select batch</option>
+			<option th:each="file : ${files}" th:value="${file}" th:text="${file}" th:selected="${file==fileName}"></option>
+		</select>
+        <select id="status" name="status">
+          <option value="adyen_created_success">adyen_created_success</option>       
+          <option value="adyen_created_failed">adyen_created_failed</option>
+        </select>
+        
+		<input type="submit" id="exportAsFile" name="exportAsFile" value="Export into file"/>
+	</form>
+</body>
+</html>

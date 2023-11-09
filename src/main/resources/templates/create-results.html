@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Adyen create accounts results</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div>
+
+ <div th:replace="fragments/header.html :: header"></div>
+ <a href="/export-select-file">Export into file</a>
+
+</div>
+</br>
+<div>
+Total: [[${totalCount}]] <br/>
+Success: [[${successCount}]] <br/>
+Failed: [[${failedCount}]] <br/>
+</div>
+</br>
+
+<div>
+ 
+  <ol th:each="result,iterationStatus : ${apiCallResults}">
+    <li th:text="${result}">1</li>
+  </ol>
+
+</div>
+</body>
+</html>

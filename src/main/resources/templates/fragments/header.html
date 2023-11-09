@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+<div class="background-color:grey" th:fragment="header">
+    <h2>Adyen Account Creation Utility</h2>
+    <div style="padding-bottom:12px"><a href="/">Go to Home</a></div>
+    
+    <div th:if="${environment == 'test'}">Test Environment</div>
+    <div style="color:red" th:if="${environment == 'prod'}">Live Environment!. Utility is connected to live Adyen endpoints</div>
+</div>
+</body>
+</html>

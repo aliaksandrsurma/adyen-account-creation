@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <property name="DEV_HOME" value="./logs" />
+
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+       <encoder>
+          <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level  %logger{35} - %msg%n</pattern>
+       </encoder>
+  </appender>
+  
+  <appender name="FILE"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${DEV_HOME}/account-creation.log</file>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>
+        %d{yyyy-MM-dd HH:mm:ss} %-5level  %logger{35} - %msg%n
+      </Pattern>
+    </encoder>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- rollover daily -->
+      <fileNamePattern>${DEV_HOME}/archived/account_creation.%d{yyyy-MM-dd}.%i.log
+                        </fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <maxFileSize>10MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+
+  </appender>
+<!--  
+  <logger name="com.mkyong" level="debug"
+    additivity="false">
+    <appender-ref ref="FILE" />
+  </logger>
+-->
+  <root level="INFO">
+    <appender-ref ref="CONSOLE" />
+ 
+  </root>
+
+
+  <logger name="com.adyen" level="INFO">
+    <appender-ref ref="FILE" />
+  </logger>
+</configuration>
