@@ -6,7 +6,7 @@ services:
     ports:
       - 8080:8080
     networks:
-      - springapimysql-net
+      - account-creation-net
     environment:
       - spring.datasource.url=jdbc:mysql://mysqldb:3306/mysqldb?allowPublicKeyRetrieval=true
     depends_on:
@@ -18,11 +18,11 @@ services:
     ports:
       - 3306:3306
     networks:
-      - springapimysql-net
+      - account-creation-net
     environment:
       MYSQL_DATABASE: mysqldb
       MYSQL_USER: user
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: root
 networks:
-  springapimysql-net:
+  account-creation-net:
